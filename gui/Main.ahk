@@ -155,7 +155,7 @@ Gui Main:Add, Link, gMainZhanFa x316 y363 h20, <a>战法自动炫纹</a>
 Gui Main:Add, CheckBox, vJianZong x298 y380 h20 w16
 Gui Main:Add, Link, gMainJianZong x316 y383 h20, <a>太宗帝剑延迟</a>
 Gui Main:Add, CheckBox, vGuanYu x298 y400 h20 w16
-Gui Main:Add, Link, gMainGuanYu x316 y403 h20, <a>关羽自动啪啪啪</a>
+Gui Main:Add, Link, gMainGuanYu x316 y403 h20, <a>关羽自动战戟猛攻</a>
 
 ShowGuiMain(){
     Gui Main:Show, w940 h510, DAF连发工具 - DNF AutoFire

@@ -3,16 +3,16 @@ Gui GuanYu:Add, ListBox, vGuanYuKeysListBox x8 y32 w80 h210
 Gui GuanYu:Add, Edit, vGuanYuShotKey x96 y120 w80 h20 +ReadOnly -WantCtrlA 
 Gui GuanYu:Add, Button, gGuanYuAddKey x96 y40 w80 h22, 添加技能键
 Gui GuanYu:Add, Button, gGuanYuDeleteKey x96 y70 w80 h22, 删除技能键
-Gui GuanYu:Add, Button, gGuanYuSetShotKey x96 y149 w80 h22, 设置啪啪啪键
+Gui GuanYu:Add, Button, gGuanYuSetShotKey x96 y149 w80 h22, 设置猛攻键
 Gui GuanYu:Add, Text, x8 y8 w80 h20 +0x200  , 已添加技能键
-Gui GuanYu:Add, Text, x96 y100 w80 h20 +0x200  , 啪啪啪键
+Gui GuanYu:Add, Text, x96 y100 w80 h20 +0x200  , 战戟猛攻键
 Gui GuanYu:Add, Button, gGuanYuSave x97 y234 w80 h27, 保存
 Gui GuanYu:Add, Button, gGuanYuHelp x158 y8 w18 h18, ?
-Gui GuanYu:Add, Text, x96 y182 w80 h20 +0x200  , 啪啪啪延迟
+Gui GuanYu:Add, Text, x96 y182 w80 h20 +0x200  , 延迟
 Gui GuanYu:Add, Edit, vGuanYuDelay x96 y202 w80 h20 +Number
 
 ShowGuiGuanYu(){
-    Gui GuanYu:Show, w184 h270, 关羽自动啪啪啪
+    Gui GuanYu:Show, w184 h270, 关羽自动战戟猛攻
     GuanYuLoadConfig()
     DisableGuiMain()
 }

@@ -1,26 +1,22 @@
 ﻿GetUpdateInfo(){
     GuiControl Main:Disabled, MainCheckUpdate
-    req := ComObjCreate("Msxml2.XMLHTTP")
-    req.open("GET", "https://ghproxy.com/https://raw.githubusercontent.com/mouyase/DNFAutoFire/main/Version", true)
-    req.onreadystatechange := Func("OnGetUpdateInfo").Bind(req)
+    req := ComObjCreate("Winhttp.winhttprequest.5.1")
+    req.open("GET", "https://ghproxy.com/https://raw.githubusercontent.com/Marcus0605/DNFAutoFire/main/Version", true)
+    req.Option(4) = 0x3300
     req.send()
-}
-
-OnGetUpdateInfo(req){
+    req.WaitForResponse()
+    body := req.ResponseText
+    HTTP_code := req.Status
     global __Version
-    if (req.readyState != 4){
-        return
-    }
-    if (req.status == 200){
-        body := req.ResponseText
+    if (HTTP_code == 200){
         json := JSON2Object(body)
         version := json["tag_name"]
         info:= json["body"]
-        downloadUrl := "https://ghproxy.com/https://github.com/mouyase/DNFAutoFire/releases/download/" . version . "/DNFAutoFire.exe"
+        downloadUrl := "https://ghproxy.com/https://github.com/Marcus0605/DNFAutoFire/releases/download/" . version . "/DNFAutoFire.exe"
         size := json["assets"][1]["size"]
         info := RegExReplace(info, "\s\r\nMD5.+")
         if("v" . __Version != version){
-            MsgBox 0x2044, 检查更新, 当前版本 v%__Version%`n最新版本 %version%`n`n版本说明`n%info%`n`n是否立即更新并重启？
+            MsgBox 0x2044, 检查更新, 当前版本 v%__Version%`nGithub版本 %version%`n`n版本说明`n%info%`n`n是否立即更新并重启？
             IfMsgBox Yes, {
                 DownloadToFile(downloadUrl, size)
             }
@@ -28,7 +24,7 @@ OnGetUpdateInfo(req){
             MsgBox 0x2040, , 已经是最新版本
         }
     } else {
-        MsgBox 0x10, , 版本检查出错，请稍后重试
+        MsgBox 0x10, , 版本检查出错，请稍后重试(HTTP_CODE:%HTTP_code%)
     }
     GuiControl Main:Enable, MainCheckUpdate
 }
