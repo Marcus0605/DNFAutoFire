@@ -24,7 +24,7 @@ SetBatchLines, -1
 ListLines, Off
 SetStoreCapslockMode, Off
 
-global __Version := "0.1.3"
+global __Version := "1.0.0Fork"
 
 #Include <RunWithAdministrator>
 #Include <MultipleThread>
