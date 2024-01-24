@@ -1,7 +1,7 @@
 ﻿GetUpdateInfo(){
     GuiControl Main:Disabled, MainCheckUpdate
     req := ComObjCreate("Winhttp.winhttprequest.5.1")
-    req.open("GET", "https://ghproxy.com/https://raw.githubusercontent.com/Marcus0605/DNFAutoFire/main/Version", true)
+    req.open("GET", "https://gitee.com/lcmkc/DNFAutoFire/raw/main/Version", true)
     req.Option(4) = 0x3300
     req.send()
     req.WaitForResponse()
@@ -12,7 +12,7 @@
         json := JSON2Object(body)
         version := json["tag_name"]
         info:= json["body"]
-        downloadUrl := "https://ghproxy.com/https://github.com/Marcus0605/DNFAutoFire/releases/download/" . version . "/DNFAutoFire.exe"
+        downloadUrl := "https://gitee.com/lcmkc/DNFAutoFire/releases/download/" . version . "/DNFAutoFire.exe"
         size := json["assets"][1]["size"]
         info := RegExReplace(info, "\s\r\nMD5.+")
         if("v" . __Version != version){
@@ -42,6 +42,7 @@ DownloadToFile(url, size){
         if (userAgent){
             hObject.SetRequestHeader("User-Agent",userAgent)
         }
+        hObject.Option(4) = 0x3300
         hObject.Send()
         ShowGuiUpdateProgress()
         hObject.WaitForResponse()
