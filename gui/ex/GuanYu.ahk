@@ -8,7 +8,7 @@ Gui GuanYu:Add, Text, x8 y8 w80 h20 +0x200  , 已添加技能键
 Gui GuanYu:Add, Text, x96 y100 w80 h20 +0x200  , 战戟猛攻键
 Gui GuanYu:Add, Button, gGuanYuSave x97 y234 w80 h27, 保存
 Gui GuanYu:Add, Button, gGuanYuHelp x158 y8 w18 h18, ?
-Gui GuanYu:Add, Text, x96 y182 w80 h20 +0x200  , 延迟
+Gui GuanYu:Add, Text, x96 y182 w80 h20 +0x200  , 延迟(毫秒)
 Gui GuanYu:Add, Edit, vGuanYuDelay x96 y202 w80 h20 +Number
 
 ShowGuiGuanYu(){
@@ -31,7 +31,7 @@ GuanYuGuiClose(){
 }
 
 GuanYuHelp(){
-    MsgBox 0x2020, 本功能基于战法炫纹功能做的修改，在原功能基础上增加delay参数，来实现关羽的自动战戟猛攻，防止空格键加速报废，最后感谢某亚瑟的代码贡献。
+    MsgBox 0x2020, ,本功能基于战法炫纹功能做的修改，在原功能基础上增加delay参数，来实现关羽的自动战戟猛攻，防止空格键加速报废，最后感谢某亚瑟的代码贡献。
 }
 
 global __GuanYuSkillKeys := []
