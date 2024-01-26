@@ -12,7 +12,7 @@
         json := JSON2Object(body)
         version := json["tag_name"]
         info:= json["body"]
-        downloadUrl := "https://gitee.com/lcmkc/DNFAutoFire/releases/download/" . version . "/DNFAutoFire.exe"
+        downloadUrl := "https://gitee.com/lcmkc/DNFAutoFire/releases/download/" . version . "/DNF_AHK.exe"
         size := json["assets"][1]["size"]
         info := RegExReplace(info, "\s\r\nMD5.+")
         if("v" . __Version != version){
@@ -58,7 +58,7 @@ DownloadToFile(url, size){
         FileEncoding cp54936
         file := FileOpen("Update.bat", "w")
         pid := DllCall("GetCurrentProcessId")
-        command := "@echo off`r`ntaskkill /f /pid " . pid . "`r`ntimeout /t 3 /nobreak > NUL`r`ndel DAF连发工具.exe`r`ntimeout /t 3 /nobreak > NUL`r`nren DNFAutoFire.exe DAF连发工具.exe`r`ntimeout /t 1 /nobreak > NUL`r`nstart DAF连发工具.exe"
+        command := "@echo off`r`ntaskkill /f /pid " . pid . "`r`ntimeout /t 3 /nobreak > NUL`r`ndel DAF连发工具.exe`r`ntimeout /t 3 /nobreak > NUL`r`nren DAF_AHK.exe DAF连发工具.exe`r`ntimeout /t 1 /nobreak > NUL`r`nstart DAF连发工具.exe"
         file.Write(command)
         file.Close()
         Sleep, 1000
